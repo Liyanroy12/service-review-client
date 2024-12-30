@@ -48,8 +48,8 @@ const Service = () => {
   };
 
   return (
-    <div>
-      <div className="mb-4 flex gap-4">
+    <div className='w-11/12 mx-auto'>
+      <div className="my-4 flex gap-4">
         <input
           type="text"
           placeholder="Search services..."
@@ -75,14 +75,14 @@ const Service = () => {
         {filteredServices.map((service) => (
           <div key={service._id} className="border p-4 rounded shadow">
             <img src={service.serviceImage} alt={service.serviceTitle} className="w-full h-40 object-cover mb-4" />
-            <h1 className="text-lg font-bold">{service.companyName}</h1>
-            <h2 className="text-md text-gray-600">{service.serviceTitle}</h2>
-            <p className="text-sm text-gray-500">{service.description}</p>
-            <p className="text-sm font-semibold">{service.category}</p>
-            <p className="text-lg font-bold text-orange-500">${service.price}</p>
-            <Link to={`/service/${service._id}`} className="btn btn-warning mt-4 block text-center">
-              Details
-            </Link>
+            <h1 className="text-lg font-bold">Company Name: {service.companyName}</h1>
+            <h2 className="text-md text-gray-600">Title: {service.serviceTitle}</h2>
+            <p className="text-sm text-gray-500">Description: {service.description}</p>
+            <p className="text-sm font-semibold">Category: {service.category}</p>
+            <p className="text-lg font-bold text-orange-500">Price: ${service.price}</p>
+              <Link className='w-full' to={`/service/${service._id}`}>
+                <button className="btn btn-warning mt-4 block text-center w-full">Details</button>
+              </Link>
           </div>
         ))}
       </div>
