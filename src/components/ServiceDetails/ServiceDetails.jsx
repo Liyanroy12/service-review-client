@@ -9,14 +9,14 @@ const ServiceDetails = () => {
 
   const [service, setService] = useState(null);
   const [reviews, setReviews] = useState([]);
-  const [newReview, setNewReview] = useState({ text: "", rating: 0 });
+  const [newReview, setNewReview] = useState({ text: "", rating: 0, title:"" });
 
   useEffect(() => {
-    fetch(`http://localhost:3000/service/${id}`)
+    fetch(`https://service-review-system-server-kappa.vercel.app/service/${id}`)
       .then((res) => res.json())
       .then((data) => setService(data));
 
-    fetch(`http://localhost:3000/reviews/${id}`)
+    fetch(`https://service-review-system-server-kappa.vercel.app/reviews/${id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [id]);
@@ -34,11 +34,14 @@ const ServiceDetails = () => {
       userEmail: user.email,
       userName: user.displayName,
       userPhoto: user.photoURL,
+      price: user.price,
+      reating: user.reating,
+      title: user.serviceTitle,
       ...newReview,
     };
 
     try {
-      const response = await fetch("http://localhost:3000/reviews", {
+      const response = await fetch("https://service-review-system-server-kappa.vercel.app/reviews", {
         method: "POST",
         withCredentials: true,
         headers: { "Content-Type": "application/json" },

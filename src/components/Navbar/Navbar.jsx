@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useContext, useEffect, useState } from "react";
 import { authContext } from "../Authprovider/AuthProvider";
-
+import logo from '../../assets/logo.png'
 const Navbar = () => {
   const { user, handleLogout } = useContext(authContext);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -103,21 +103,6 @@ const Navbar = () => {
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      {/* Logo */}
-      <div className="flex items-center gap-4">
-        <Link to="/">
-          <div className="text-white text-lg font-bold">LOGO</div>
-        </Link>
-      </div>
-
-      {/* Navbar Links */}
-      <div className="hidden lg:flex">
-        <ul className="menu menu-horizontal text-white gap-4">
-          {user?.email ? loggedInLinks : loggedOutLinks}
-        </ul>
-      </div>
-
-      {/* Dropdown Menu for Mobile */}
       <div className="dropdown lg:hidden">
         <button className="btn btn-warning" tabIndex={0}>
           <svg
@@ -137,6 +122,41 @@ const Navbar = () => {
           {user?.email ? loggedInLinks : loggedOutLinks}
         </ul>
       </div>
+      {/* Logo */}
+      <div className="flex items-center gap-4">
+        <Link to="/">
+          {/* <div className="text-2xl font-bold text-red-500">{logo}</div> */}
+          <img className="w-20 rounded-full" src={logo} alt="" />
+        </Link>
+      </div>
+
+      {/* Navbar Links */}
+      <div className="hidden lg:flex items-center text-center">
+        <ul className="menu menu-horizontal text-white gap-4">
+          {user?.email ? loggedInLinks : loggedOutLinks}
+        </ul>
+      </div>
+
+      {/* Dropdown Menu for Mobile */}
+      {/* <div className="dropdown lg:hidden">
+        <button className="btn btn-warning" tabIndex={0}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+          </svg>
+        </button>
+        <ul
+          tabIndex={0}
+          className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box -mr-[500px]"
+        >
+          {user?.email ? loggedInLinks : loggedOutLinks}
+        </ul>
+      </div> */}
 
       {/* Theme Toggle */}
       {/* <button

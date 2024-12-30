@@ -9,6 +9,7 @@ import Service from "../pages/Service";
 import ServiceDetails from "../components/ServiceDetails/ServiceDetails";
 import MyReviews from "../pages/MyReviews";
 import MyService from "../pages/MyService";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
                 element: <Home />,
             },{
                 path: '/addService',
-                element: <AddService/>
+                element: <PrivateRoute><AddService/></PrivateRoute>
             },
             {
                 path: '/login',
@@ -37,15 +38,15 @@ const router = createBrowserRouter([
             },
             {
                 path: "/service/:id",
-                element: <ServiceDetails/>
+                element: <PrivateRoute><ServiceDetails/></PrivateRoute>
             },
             {
                 path: '/myReviews',
-                element: <MyReviews/>
+                element: <PrivateRoute><MyReviews/></PrivateRoute>
             },
             {
                 path: '/myServices',
-                element: <MyService/>,
+                element: <PrivateRoute><MyService/></PrivateRoute>,
             }
         ]
     },

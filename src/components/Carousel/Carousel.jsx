@@ -9,9 +9,9 @@ import 'swiper/css/navigation'
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 
-import bgimg1 from '../../assets/hero first.jpg'
-import bgimg2 from '../../assets/hero second.jpg'
-import bgimg3 from '../../assets/hero third.jpg'
+import bgimg1 from '../../assets/slider2.jpeg'
+import bgimg2 from '../../assets/slider3.jpeg'
+import bgimg3 from '../../assets/slider4.jpeg'
 import Slide from '../Slide/Slide'
 
 export default function Carousel() {

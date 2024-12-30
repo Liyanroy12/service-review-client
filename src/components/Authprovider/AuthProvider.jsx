@@ -54,14 +54,14 @@ const AuthProvider = ({ routes }) => {
     //         if (currentUser?.email) {
     //             setUser(currentUser);
     //             const { data } = await axios.post(
-    //                 `http://localhost:3000/jwt`,
+    //                 `https://service-review-system-server-kappa.vercel.app/jwt`,
     //                 { email: currentUser?.email },
     //                 { withCredentials: true }
     //             );
     //             console.log(data);
     //         } else {
     //             setUser(currentUser);
-    //             await axios.get(`http://localhost:3000/logout`, {
+    //             await axios.get(`https://service-review-system-server-kappa.vercel.app/logout`, {
     //                 withCredentials: true,
     //             });
     //         }
@@ -79,13 +79,13 @@ const AuthProvider = ({ routes }) => {
             if (currentUser?.email) {
                 setUser(currentUser)
                 // 13 13 13 13 13 server theke data ta ekane load koric jwt er
-                const { data } = await axios.post(`http://localhost:3000/jwt`, { email: currentUser?.email },
+                const { data } = await axios.post(`https://service-review-system-server-kappa.vercel.app/jwt`, { email: currentUser?.email },
                     { withCredentials: true }
                 )
                 console.log(data)
             } else {
                 setUser(currentUser)
-                const { data } = await axios.get(`http://localhost:3000/logout`,
+                const { data } = await axios.get(`https://service-review-system-server-kappa.vercel.app/logout`,
                     { withCredentials: true }
                 )
             }

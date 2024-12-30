@@ -20,7 +20,7 @@ const MyReviews = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:3000/user/reviews?email=${user.email}`)
+      fetch(`https://service-review-system-server-kappa.vercel.app/user/reviews?email=${user.email}`)
         .then(res => res.json())
         .then(data => setServices(data));
     }
@@ -43,7 +43,7 @@ const MyReviews = () => {
 
   const handleDelete = (_id) => {
 
-    fetch(`http://localhost:3000/deleteReview/${_id}`, {
+    fetch(`https://service-review-system-server-kappa.vercel.app/deleteReview/${_id}`, {
       method: 'DELETE',
 
     })
@@ -81,7 +81,7 @@ const MyReviews = () => {
 
     console.log(updatedService)
 
-    fetch(`http://localhost:3000/updateReview/${selectedService._id}`, {
+    fetch(`https://service-review-system-server-kappa.vercel.app/updateReview/${selectedService._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -106,30 +106,30 @@ const MyReviews = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search services..."
-        value={searchQuery}
-        onChange={handleSearch}
-        className="mb-4 p-2 border rounded"
-      />
+    <div className='w-11/12 mx-auto'>
+      <div className='flex justify-center my-4'>
+        <input
+          type="text"
+          placeholder="Search services..."
+          value={searchQuery}
+          onChange={handleSearch}
+          className="mb-4 py-2 px-24 border rounded"
+        />
+      </div>
       <table className="min-w-full table-auto">
         <thead>
           <tr>
             <th>Service Title</th>
-            <th>Company Name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Price</th>
+            <th>Rating</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {services.map((service) => (
             <tr key={service._id}>
-              <td>{service.text}</td>
-              <td>
+              <td className='text-center'>{service.text}</td>
+              <td className='text-center'>{service.rating}</td>
+              <td className='text-center'>
 
                 <Link to={`/service/${service._id}`} className="btn btn-warning mr-2">Details</Link>
                 <button
@@ -163,29 +163,36 @@ const MyReviews = () => {
 
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click the button below to close</p>
+          {/* <h3 className="font-bold text-lg">Hello!</h3>
+          <p className="py-4">Press ESC key or click the button below to close</p> */}
           <div className="modal-action">
-            <div >
+            <div className=''>
               <h2>Update Service</h2>
-              <input
-                type="number"
-                value={updatedService.rating}
-                onChange={(e) => setUpdatedService({ ...updatedService, rating: e.target.value })}
-                placeholder="Service Title"
-              />
-              <textarea
-                value={updatedService.text}
-                onChange={(e) => setUpdatedService({ ...updatedService, text: e.target.value })}
-                placeholder="Description"
-              />
-              <button onClick={handleUpdate}>Update</button>
+              <div className='flex gap-4'>
+                <input
+                  type="number"
+                  value={updatedService.rating}
+                  onChange={(e) => setUpdatedService({ ...updatedService, rating: e.target.value })}
+                  placeholder="Service Title"
+                  className='border'
+                />
+                <textarea
+                  value={updatedService.text}
+                  onChange={(e) => setUpdatedService({ ...updatedService, text: e.target.value })}
+                  placeholder="Description"
+                  className='border'
+                />
+              </div>
+              <div className='flex justify-center gap-5 my-5'>
+                <button className='btn' onClick={handleUpdate}>Update</button>
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn">Close</button>
+                </form>
+              </div>
               {/* <button onClick={closeUpdateModal}>Cancel</button> */}
             </div>
-            <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button className="btn">Close</button>
-            </form>
+
           </div>
         </div>
       </dialog>

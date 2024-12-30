@@ -10,7 +10,7 @@ const Service = () => {
 
   // Fetch services from the server
   useEffect(() => {
-    fetch('http://localhost:3000/services')
+    fetch('https://service-review-system-server-kappa.vercel.app/services')
       .then((res) => res.json())
       .then((data) => {
         setServices(data);

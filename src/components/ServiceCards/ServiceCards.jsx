@@ -6,7 +6,7 @@ const ServiceCards = () => {
 
     useEffect(() => {
         // Fetch services with a limit of 6
-        fetch('http://localhost:3000/services')
+        fetch('https://service-review-system-server-kappa.vercel.app/services')
             .then((res) => res.json())
             .then((data) => setServices(data))
             .catch((error) => console.error('Error fetching services:', error));

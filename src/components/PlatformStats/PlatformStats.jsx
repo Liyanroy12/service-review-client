@@ -12,7 +12,7 @@ const PlatformStats = () => {
 
   useEffect(() => {
     // Fetch stats from the backend
-    fetch('http://localhost:3000/platform-stats')
+    fetch('https://service-review-system-server-kappa.vercel.app/platform-stats')
       .then((res) => res.json())
       .then((data) => {
         setStats(data);

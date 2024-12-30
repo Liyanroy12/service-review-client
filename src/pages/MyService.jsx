@@ -14,7 +14,7 @@ const MyService = () => {
     });
 
     useEffect(() => {
-        fetch('http://localhost:3000/services')
+        fetch('https://service-review-system-server-kappa.vercel.app/services')
             .then((res) => res.json())
             .then((data) => setServices(data));
     }, []);
@@ -46,7 +46,7 @@ const MyService = () => {
 
     const handleUpdate = () => {
         console.log(updatedService)
-        fetch(`http://localhost:3000/updateService/${selectedService._id}`, {
+        fetch(`https://service-review-system-server-kappa.vercel.app/updateService/${selectedService._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ const MyService = () => {
     };
 
     const handleDelete = (_id) => {
-        fetch(`http://localhost:3000/service/${_id}`, {
+        fetch(`https://service-review-system-server-kappa.vercel.app/service/${_id}`, {
             method: 'DELETE',
         })
             .then((res) => res.json())
